@@ -68,7 +68,7 @@ class ClientController
             $client = new Client();
             if($client->addClient($prenom,$nom,$age,$profession,$reference)){
                 echo json_encode(
-                    array("message"=>"Client Account created")
+                    array("reference"=>$reference)
                 );
             }else
             {
@@ -96,6 +96,7 @@ class ClientController
             if($result = $client->getClient($referenceCheck)){
                 extract($result);
                 echo $idClient;
+
             }
             else{
                 $message = array(

@@ -2,7 +2,7 @@
 
 class Admin extends DB 
 {
-    private $table = "client";
+    private $table = "administrateur";
     private $conn; 
 
     public function __construct()
@@ -43,4 +43,19 @@ class Admin extends DB
         return $stmt->execute();
 
     }
+
+    public function getAdmin()
+    {
+        $query = "SELECT * FROM $this->table ";
+        $stmt = $this->conn->prepare($query);
+
+        // $stmt->bindParam(':reference',$reference);
+
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+
 }
